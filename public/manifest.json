@@ -1,0 +1,13 @@
+{
+  "name": "Final Fantasy Resonance Wiki",
+  "short_name": "FF Resonance Wiki",
+  "description": "Independent Final Fantasy Resonance database, character and systems guide.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#070b14",
+  "theme_color": "#0b1220",
+  "icons": [
+    { "src": "/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/android-chrome-512x512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
