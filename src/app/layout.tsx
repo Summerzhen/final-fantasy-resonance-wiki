@@ -10,8 +10,8 @@ const siteUrl = "https://final-fantasy-resonance.wiki";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: { default: "Final Fantasy Resonance Wiki, Database & Guides", template: "%s | FF Resonance Wiki" },
-  description: "Explore Final Fantasy Resonance characters, Visions, combat systems, release details, and sourced updates for Square Enix's HD-2D RPG.",
+  title: { default: "Final Fantasy Resonance Wiki & Guide | FF Resonance", template: "%s | FF Resonance Wiki" },
+  description: "Final Fantasy Resonance Wiki (FF Resonance Wiki) with sourced character profiles, a Visions database, combat guides, release details, and clear evidence status.",
   manifest: "/manifest.json",
   verification: { google: "btOXORnOUX_1quBU-FCrPpTqrMQu86uW8Ca-t3EhHiY" },
   alternates: { canonical: "/" },

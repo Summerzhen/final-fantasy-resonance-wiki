@@ -91,6 +91,7 @@ function VisionDirectory() {
   const knownRoles = Array.from(new Set(revealed.flatMap((vision) => vision.role.split(" / ")).filter((role) => role !== "Unknown")));
   return (
     <div className="vision-directory">
+      <InfoCallout title="What are Visions?" value="Equippable legacy-hero records used in Final Fantasy Resonance combat" copy="This index tracks each currently revealed Vision's origin, role, elements, known ability and evidence status, then links to a dedicated record for confirmed or observed entries." />
       <div className="status-strip vision-status-strip">
         <Metric value={visions.length} label="Total slots" />
         <Metric value={visions.filter((vision) => vision.status === "Confirmed").length} label="Confirmed" />

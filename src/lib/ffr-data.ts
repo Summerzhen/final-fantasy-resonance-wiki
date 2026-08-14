@@ -100,7 +100,7 @@ export const routeMeta: Record<string, { title: string; description: string }> =
   demo: { title: "Is There a Final Fantasy Resonance Demo?", description: "A platform-by-platform demo status tracker with a clear last-verified date." },
   "pc-system-requirements": { title: "Final Fantasy Resonance PC System Requirements", description: "Official minimum and recommended PC specs, including CPU, GPU, DirectX 12, storage and 1080p performance targets from Steam." },
   characters: { title: "Final Fantasy Resonance Characters", description: "Filter the known cast by group, combat role and evidence status." },
-  visions: { title: "Final Fantasy Resonance Visions Tracker", description: "A 26-slot searchable Vision database covering mainline heroes, roles, elements, abilities and reveal status." },
+  visions: { title: "FF Resonance Visions — Final Fantasy Resonance Database", description: "Visions are equippable records in Final Fantasy Resonance. Browse the 26-slot tracker by origin, role, element, ability and reveal status." },
   combat: { title: "Final Fantasy Resonance Combat Explained", description: "Turn order, party size, Stagger, Extra Phase, Visions, difficulty and battle-speed settings." },
   "stagger-system": { title: "Final Fantasy Resonance Stagger System", description: "How weaknesses, Stagger Gauges, bonus actions and Sweeping Stagger connect." },
   "resonance-attacks": { title: "Final Fantasy Resonance Attacks Database", description: "Known Resonance attack triggers, effects and connected Visions, with evidence status." },

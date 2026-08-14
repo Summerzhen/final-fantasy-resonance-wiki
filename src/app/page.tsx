@@ -36,9 +36,10 @@ export default function HomePage() {
             <div className="archive-label"><span>CRYSTAL ARCHIVE</span><i /><small>EST. 2026</small></div>
             <p className="eyebrow">THE INDEPENDENT PLAYER DATABASE</p>
             <h1><span>Final Fantasy</span><em>Resonance</em><small>Wiki</small></h1>
-            <p className="lede">A living field guide to the characters, Visions and combat systems shaping the first HD-2D Final Fantasy.</p>
+            <p className="lede">The Final Fantasy Resonance Wiki (FF Resonance Wiki): a sourced guide to characters, Visions, combat systems, platforms and release information.</p>
             <div className="hero-actions">
-              <Link className="primary-button" href="/visions">Enter the archive <ArrowRight /></Link>
+              <Link className="primary-button" href="/visions">Browse Visions <ArrowRight /></Link>
+              <Link className="ghost-button" href="/characters">Browse characters <ArrowUpRight /></Link>
               <Link className="ghost-button" href="/game">Read the game brief <ArrowUpRight /></Link>
             </div>
             <div className="chips" aria-label="Game facts">
