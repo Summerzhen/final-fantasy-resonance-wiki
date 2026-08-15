@@ -30,6 +30,13 @@ const searchDestinations = [
   { href: "/stagger-system", label: "Stagger system", group: "Systems" },
   { href: "/resonance-attacks", label: "Resonance attacks", group: "Systems" },
   { href: "/brave-exvius-comparison", label: "Brave Exvius comparison", group: "Game" },
+  { href: "/locations", label: "Locations database", group: "World" },
+  { href: "/how-to-get-visions", label: "How to get Visions", group: "Systems" },
+  { href: "/preorder", label: "Preorder & editions", group: "Launch" },
+  { href: "/bosses/gilgamesh", label: "Gilgamesh", group: "Side content" },
+  { href: "/bosses/ultima-weapon", label: "Ultima Weapon", group: "Side content" },
+  { href: "/chamber-of-arms", label: "Chamber of Arms", group: "Side content" },
+  { href: "/colosseum", label: "Colosseum", group: "Side content" },
 ];
 
 function CrystalMark({ compact = false }: { compact?: boolean }) {
@@ -259,8 +266,8 @@ export function SiteFooter() {
           <p>An independent, evidence-led player database for Final Fantasy Resonance.</p>
           <span className="footer-coordinate">ARCHIVE // LPS-2026</span>
         </div>
-        <FooterColumn title="Explore" links={[["Game overview", "/game"], ["Characters", "/characters"], ["Visions", "/visions"], ["Combat", "/combat"]]} />
-        <FooterColumn title="Release" links={[["Platforms", "/release-date-platforms"], ["Editions", "/editions-pre-order"], ["Demo tracker", "/demo"], ["PC requirements", "/pc-system-requirements"]]} />
+        <FooterColumn title="Explore" links={[["Game overview", "/game"], ["Characters", "/characters"], ["Visions", "/visions"], ["Locations", "/locations"]]} />
+        <FooterColumn title="Release" links={[["Platforms", "/release-date-platforms"], ["Preorder", "/preorder"], ["Editions", "/editions-pre-order"], ["PC requirements", "/pc-system-requirements"]]} />
         <FooterColumn title="Systems" links={[["Stagger", "/stagger-system"], ["Resonance attacks", "/resonance-attacks"], ["Espers", "/espers"], ["FFBE comparison", "/brave-exvius-comparison"]]} />
       </div>
       <div className="legal">Final Fantasy Resonance Wiki is an independent fan-made reference site. FINAL FANTASY, FINAL FANTASY RESONANCE, related characters, artwork and game assets are trademarks or copyrighted works of Square Enix Holdings Co., Ltd. and/or its affiliates. Original editorial text, design and data organization © 2026 final-fantasy-resonance.wiki.</div>

@@ -18,7 +18,7 @@ import {
 } from "lucide-react";
 import { Breadcrumbs, SourcePanel, StatusBadge } from "./ffr-site";
 import { CharacterExplorer, VisionExplorer } from "./data-explorers";
-import { characters, combatFacts, editions, espers, facts, platforms, routeMeta, visions } from "@/lib/ffr-data";
+import { characters, combatFacts, editions, espers, facts, locations, platforms, routeMeta, sideContent, visions } from "@/lib/ffr-data";
 
 const verified = "August 13, 2026";
 
@@ -51,7 +51,30 @@ function renderBody(route: string) {
   if (route === "resonance-attacks") return <ResonancePage />;
   if (route === "espers") return <EsperAtlas />;
   if (route === "brave-exvius-comparison") return <ComparisonPage />;
+  if (["locations", "how-to-get-visions", "sanctums-of-light", "preorder", "switch-vs-switch-2", "gilgamesh", "ultima-weapon", "chamber-of-arms", "colosseum"].includes(route)) return <ConfirmedInformationPage route={route} />;
   return <GameOverview />;
+}
+
+function ConfirmedInformationPage({ route }: { route: string }) {
+  const meta = routeMeta[route];
+  const isLocations = route === "locations";
+  const isVisionAccess = route === "how-to-get-visions" || route === "sanctums-of-light";
+  const content = sideContent.find((item) => item.slug === route);
+  return (
+    <div className="record-stack">
+      <InfoCallout
+        title={content ? content.type : isVisionAccess ? "VISION SYSTEM" : isLocations ? "WORLD DATABASE" : "LAUNCH INFORMATION"}
+        value={content?.summary ?? (isLocations ? "Confirmed locations, with unrevealed map details left open for launch." : isVisionAccess ? "Vision Crystals and Sanctums of Light are confirmed; exact unlock requirements are not." : "Officially confirmed information only")}
+        copy="This page separates confirmed facts from details that Square Enix has not announced. It will be expanded when the game launches on October 22, 2026."
+      />
+      {isLocations && <section className="record-section"><SectionLabel index="01" title="Confirmed locations" id="confirmed-locations" copy="No chests, shops or quest routes are guessed before release." /><div className="field-card-grid">{locations.map((location) => <article className="field-card" key={location.slug}><small>{location.type}</small><strong>{location.name}</strong><p>{location.purpose}</p><StatusBadge status={location.status} /></article>)}</div></section>}
+      {isVisionAccess && <section className="record-section"><SectionLabel index="01" title="What is confirmed" id="vision-access-facts" /><div className="field-card-grid"><FieldCard label="Resource" value="Vision Crystals" status="Confirmed" /><FieldCard label="Connected site" value="Sanctums of Light" status="Confirmed" /><FieldCard label="Unlock details" value="Not officially revealed" status="Unknown" /><FieldCard label="Next links" value="Vision list, Squall, Tidus and Zidane" status="Reported" /></div><p className="record-copy">Use this page as the bridge between the Vision database, individual Vision records and the world locations where Vision-related content appears. Exact unlock requirements will be updated after launch.</p></section>}
+      {content && <section className="record-section"><SectionLabel index="01" title="Confirmed information" id="confirmed-information" /><div className="field-card-grid"><FieldCard label="Status" value="Officially confirmed" status="Confirmed" /><FieldCard label="Location" value="Not officially revealed" status="Unknown" /><FieldCard label="Weaknesses" value="Available after launch" status="Unknown" /><FieldCard label="Rewards" value="Available after launch" status="Unknown" /></div><p className="record-copy">The page is intentionally launch-ready: the confirmed entity is indexed now, while location, encounter rules, rewards and strategy will be added only when verified.</p></section>}
+      {route === "preorder" && <section className="record-section"><SectionLabel index="01" title="Editions and preorder coverage" id="preorder-editions" /><div className="field-card-grid">{editions.map((edition) => <FieldCard key={edition.name} label={edition.name} value={edition.usd} status="Confirmed" />)}<FieldCard label="Preorder bonus" value="Official details tracked here" status="Confirmed" /><FieldCard label="Early purchase bonus" value="Official details tracked here" status="Confirmed" /></div></section>}
+      {route === "switch-vs-switch-2" && <section className="record-section"><SectionLabel index="01" title="Version comparison" id="switch-comparison" /><div className="field-card-grid"><FieldCard label="Switch file size" value="8.8 GB" status="Confirmed" /><FieldCard label="Switch 2 file size" value="12.7 GB" status="Confirmed" /><FieldCard label="Save transfer" value="Not supported between versions" status="Confirmed" /><FieldCard label="Upgrade pack" value="No plan announced" status="Confirmed" /></div></section>}
+      <nav className="system-jump-grid" aria-label="Connected records"><Link href="/visions"><Sparkles /><span><small>DATABASE</small><b>Vision records</b></span><ArrowUpRight /></Link><Link href="/locations"><Database /><span><small>WORLD</small><b>All locations</b></span><ArrowUpRight /></Link><Link href="/release-date-platforms"><Clock3 /><span><small>LAUNCH</small><b>Release and platforms</b></span><ArrowUpRight /></Link></nav>
+    </div>
+  );
 }
 
 function CharacterDirectory() {
@@ -391,7 +414,7 @@ export function VisionPage({ slug }: { slug: string }) {
   const elements = vision.element.split(" / ").filter((element) => element !== "Unknown");
   const relatedVisions = visions.filter((entry) => entry.slug !== vision.slug && entry.status !== "Unknown").sort((a, b) => Number(b.game === vision.game) - Number(a.game === vision.game) || Number(b.role === vision.role) - Number(a.role === vision.role)).slice(0, 4);
   return (
-    <EntityPage kind="Vision" name={vision.name} summary={`${vision.name} is an equippable Vision originating from ${vision.game}.`} status={vision.status}>
+    <EntityPage kind="Vision" name={`${vision.name} Vision — Final Fantasy Resonance`} summary={`${vision.name} is an equippable Vision originating from ${vision.game}.`} status={vision.status}>
       <div className="vision-dossier">
         <section className="vision-ability-hero" aria-labelledby="vision-ability-heading">
           <div className="vision-sigil"><span>{vision.numeral}</span></div>

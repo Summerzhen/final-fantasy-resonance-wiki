@@ -1,6 +1,6 @@
 ﻿import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { CharacterPage, VisionPage } from "@/components/ffr-pages";
+import { CharacterPage, StandardPage, VisionPage } from "@/components/ffr-pages";
 import { AdSlot, NativeContentAd, SidebarAds, StickyTopAd } from "@/components/adsterra-ads";
 import {
   absoluteSiteUrl,
@@ -8,8 +8,16 @@ import {
   defaultOgImage,
   siteName,
   siteUrl,
+  routeMeta,
   visions,
 } from "@/lib/ffr-data";
+
+const nestedRouteKeys: Record<string, string> = {
+  "locations/sanctums-of-light": "sanctums-of-light",
+  "bosses/gilgamesh": "gilgamesh",
+  "bosses/ultima-weapon": "ultima-weapon",
+  "guides/switch-vs-switch-2": "switch-vs-switch-2",
+};
 
 type EntitySeo = {
   name: string;
@@ -28,6 +36,10 @@ export function generateStaticParams() {
     ...visions
       .filter((vision) => vision.status !== "Unknown")
       .map((vision) => ({ locale: "visions", slug: [vision.slug] })),
+    ...Object.keys(nestedRouteKeys).map((path) => {
+      const [locale, ...slug] = path.split("/");
+      return { locale, slug };
+    }),
   ];
 }
 
@@ -54,7 +66,7 @@ function getEntitySeo(locale: string, slug: string): EntitySeo | undefined {
 
     return {
       name: vision.name,
-      title: `${vision.name} in Final Fantasy Resonance - Vision Skills & Role`,
+      title: `${vision.name} – Final Fantasy Resonance Vision, Abilities & Resonance`,
       description: `${vision.name} is a ${vision.status.toLowerCase()} Vision from ${vision.game} in Final Fantasy Resonance. View its current role, elements, known ability, and evidence status.`,
       path: `/visions/${vision.slug}`,
       sectionName: "Visions",
@@ -73,7 +85,13 @@ export async function generateMetadata({
   params: Promise<{ locale: string; slug: string[] }>;
 }): Promise<Metadata> {
   const { locale, slug } = await params;
-  if (slug.length !== 1) return {};
+  if (slug.length !== 1) {
+    const route = nestedRouteKeys[`${locale}/${slug.join("/")}`];
+    const meta = route ? routeMeta[route] : undefined;
+    if (!meta) return {};
+    const canonical = absoluteSiteUrl(`/${locale}/${slug.join("/")}`);
+    return { title: meta.title, description: meta.description, alternates: { canonical }, openGraph: { type: "article", siteName, title: meta.title, description: meta.description, url: canonical, images: [defaultOgImage] } };
+  }
 
   const entity = getEntitySeo(locale, slug[0]);
   if (!entity) return {};
@@ -110,7 +128,11 @@ export default async function EntityRoute({
   params: Promise<{ locale: string; slug: string[] }>;
 }) {
   const { locale, slug } = await params;
-  if (slug.length !== 1) notFound();
+  if (slug.length !== 1) {
+    const route = nestedRouteKeys[`${locale}/${slug.join("/")}`];
+    if (!route) notFound();
+    return <StandardPage route={route} />;
+  }
 
   const entity = getEntitySeo(locale, slug[0]);
   if (!entity) notFound();

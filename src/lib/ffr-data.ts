@@ -80,6 +80,23 @@ export const espers = [
   { name: "Bahamut", route: "Story-related presence", behavior: "Travels with the unnamed mysterious woman; battle mechanics not announced", status: "Confirmed" },
 ];
 
+export const locations = [
+  { slug: "dilmagia", name: "Dilmagia", type: "Region", purpose: "A confirmed world region connected to Lid and Machinopolis.", status: "Confirmed" },
+  { slug: "machinopolis", name: "Machinopolis", type: "City / sub-region", purpose: "A technology-focused location associated with Dilmagia.", status: "Confirmed" },
+  { slug: "olderion", name: "Olderion", type: "Region", purpose: "The water-blessed region associated with Nichol and Aquapolis.", status: "Confirmed" },
+  { slug: "aquapolis", name: "Aquapolis", type: "City / sub-region", purpose: "A confirmed location within the Olderion setting.", status: "Confirmed" },
+  { slug: "sanctums-of-light", name: "Sanctums of Light", type: "Vision-related site", purpose: "Sites connected to Vision Crystals and the Vision system.", status: "Confirmed" },
+  { slug: "colosseum", name: "Colosseum", type: "Battle facility", purpose: "A side-content location featuring deadly monsters and rewards.", status: "Confirmed" },
+  { slug: "chamber-of-arms", name: "Chamber of Arms", type: "Challenge area", purpose: "A sealed challenge containing formidable foes within legendary weapons.", status: "Confirmed" },
+] as const;
+
+export const sideContent = [
+  { slug: "gilgamesh", name: "Gilgamesh", path: "/bosses/gilgamesh", type: "Character / optional encounter", summary: "The wandering swordmaster Gilgamesh is confirmed as part of Final Fantasy Resonance side content. His location, rewards and battle details remain unannounced.", status: "Confirmed" },
+  { slug: "ultima-weapon", name: "Ultima Weapon", path: "/bosses/ultima-weapon", type: "Optional boss", summary: "Square Enix has confirmed a showdown with Ultima Weapon. Exact location, stats, weaknesses and rewards are not officially revealed yet.", status: "Confirmed" },
+  { slug: "chamber-of-arms", name: "Chamber of Arms", path: "/chamber-of-arms", type: "Challenge area", summary: "The Chamber of Arms contains formidable foes sealed within legendary weapons. Unlock requirements and rewards are pending release.", status: "Confirmed" },
+  { slug: "colosseum", name: "Colosseum", path: "/colosseum", type: "Battle facility", summary: "The Colosseum is confirmed to feature deadly monsters and rewards. Its complete ruleset will be added after launch.", status: "Confirmed" },
+] as const;
+
 export const combatFacts = [
   ["Party size", "Up to four active members"], ["Turn model", "Pure command-based turns; no ATB gauge"],
   ["Turn display", "Timeline previews action order"], ["Encounter model", "Random encounters"],
@@ -95,8 +112,8 @@ export const editions = [
 
 export const routeMeta: Record<string, { title: string; description: string }> = {
   game: { title: "Everything We Know About Final Fantasy Resonance", description: "A sourced game overview covering its story, systems, developer, release plan and relationship to Brave Exvius." },
-  "release-date-platforms": { title: "Final Fantasy Resonance Release Date & Platforms", description: "Release date, supported platforms, storefronts, physical format and current demo status." },
-  "editions-pre-order": { title: "Final Fantasy Resonance Editions & Pre-Order Guide", description: "Compare Standard, Digital Deluxe and Collector's Editions, prices, contents and pre-order rewards." },
+  "release-date-platforms": { title: "Final Fantasy Resonance Release Date, Platforms & Price", description: "The October 22, 2026 release date, supported platforms, storefronts, physical formats and current launch status." },
+  "editions-pre-order": { title: "Final Fantasy Resonance Preorder, Editions, Bonuses & Prices", description: "Compare Standard, Digital Deluxe and Collector's Editions, prices, contents and preorder rewards." },
   demo: { title: "Is There a Final Fantasy Resonance Demo?", description: "A platform-by-platform demo status tracker with a clear last-verified date." },
   "pc-system-requirements": { title: "Final Fantasy Resonance PC System Requirements", description: "Official minimum and recommended PC specs, including CPU, GPU, DirectX 12, storage and 1080p performance targets from Steam." },
   characters: { title: "Final Fantasy Resonance Characters", description: "Filter the known cast by group, combat role and evidence status." },
@@ -106,4 +123,13 @@ export const routeMeta: Record<string, { title: string; description: string }> =
   "resonance-attacks": { title: "Final Fantasy Resonance Attacks Database", description: "Known Resonance attack triggers, effects and connected Visions, with evidence status." },
   espers: { title: "Final Fantasy Resonance Espers & Summons", description: "Known Espers, how they are obtained, their three-turn battle behavior and reveal status." },
   "brave-exvius-comparison": { title: "Final Fantasy Resonance vs Brave Exvius", description: "A direct comparison of story, combat, platform and business model — including why Resonance is not a gacha game." },
+  locations: { title: "Final Fantasy Resonance Locations", description: "A confirmed location database covering Dilmagia, Olderion, Sanctums of Light, the Colosseum and Chamber of Arms." },
+  "how-to-get-visions": { title: "How to Get Visions in Final Fantasy Resonance", description: "What is currently confirmed about Vision Crystals, Sanctums of Light and Vision unlocks before launch." },
+  "sanctums-of-light": { title: "Sanctums of Light — Final Fantasy Resonance", description: "Confirmed information about Sanctums of Light and their connection to Vision Crystals." },
+  preorder: { title: "Final Fantasy Resonance Preorder — Editions, Bonuses & Prices", description: "A launch-window tracker for preorder bonuses, editions and official prices." },
+  "switch-vs-switch-2": { title: "Final Fantasy Resonance Switch vs Switch 2", description: "Compare file size, save transfer, upgrade path, compatibility and purchase considerations." },
+  "gilgamesh": { title: "Gilgamesh — Final Fantasy Resonance", description: "Confirmed information about the wandering swordmaster Gilgamesh and the details still unknown until launch." },
+  "ultima-weapon": { title: "Ultima Weapon — Final Fantasy Resonance Boss Guide", description: "Confirmed side-content information about Ultima Weapon, with unrevealed fight details clearly marked." },
+  "chamber-of-arms": { title: "Chamber of Arms — Final Fantasy Resonance", description: "What is confirmed about the Chamber of Arms, its sealed foes, weapons and future rewards." },
+  colosseum: { title: "Colosseum — Final Fantasy Resonance", description: "Confirmed information about the Colosseum's monsters, rewards and post-launch guide coverage." },
 };
