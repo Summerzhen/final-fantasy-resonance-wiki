@@ -1,6 +1,7 @@
 export type Evidence = "Confirmed" | "Observed" | "Reported" | "Unknown";
 export type Character = { slug: string; name: string; group: string; role: string; job: string; affiliation: string; summary: string; status: Evidence; image?: string };
 export type Vision = { slug: string; name: string; game: string; numeral: string; role: string; element: string; ability: string; status: Evidence };
+export type LocationRecord = { slug: string; name: string; type: string; region: string; purpose: string; status: Evidence; notes: string };
 
 export const siteName = "Final Fantasy Resonance Wiki";
 export const siteUrl = "https://final-fantasy-resonance.wiki";
@@ -80,15 +81,20 @@ export const espers = [
   { name: "Bahamut", route: "Story-related presence", behavior: "Travels with the unnamed mysterious woman; battle mechanics not announced", status: "Confirmed" },
 ];
 
-export const locations = [
-  { slug: "dilmagia", name: "Dilmagia", type: "Region", purpose: "A confirmed world region connected to Lid and Machinopolis.", status: "Confirmed" },
-  { slug: "machinopolis", name: "Machinopolis", type: "City / sub-region", purpose: "A technology-focused location associated with Dilmagia.", status: "Confirmed" },
-  { slug: "olderion", name: "Olderion", type: "Region", purpose: "The water-blessed region associated with Nichol and Aquapolis.", status: "Confirmed" },
-  { slug: "aquapolis", name: "Aquapolis", type: "City / sub-region", purpose: "A confirmed location within the Olderion setting.", status: "Confirmed" },
-  { slug: "sanctums-of-light", name: "Sanctums of Light", type: "Vision-related site", purpose: "Sites connected to Vision Crystals and the Vision system.", status: "Confirmed" },
-  { slug: "colosseum", name: "Colosseum", type: "Battle facility", purpose: "A side-content location featuring deadly monsters and rewards.", status: "Confirmed" },
-  { slug: "chamber-of-arms", name: "Chamber of Arms", type: "Challenge area", purpose: "A sealed challenge containing formidable foes within legendary weapons.", status: "Confirmed" },
-] as const;
+export const locations: LocationRecord[] = [
+  { slug: "grandshelt", name: "Kingdom of Grandshelt", type: "Kingdom / story region", region: "Lapis", purpose: "Rain and Lasswell's starting kingdom.", status: "Confirmed", notes: "Rain and Lasswell serve Grandshelt at the start of the rebuilt crystal story." },
+  { slug: "earth-crystal", name: "Earth Crystal chamber", type: "Crystal location", region: "Grandshelt", purpose: "Opening crystal conflict location.", status: "Confirmed", notes: "The opening conflict centers on Veritas of the Dark attacking the Earth Crystal." },
+  { slug: "dilmagia", name: "Dilmagia", type: "Town / engineering nation", region: "Lapis", purpose: "A confirmed world region connected to Lid and engineering culture.", status: "Confirmed", notes: "Lid is associated with Dilmagia and its engineering culture." },
+  { slug: "machinopolis", name: "Machinopolis", type: "City / sub-region", region: "Dilmagia", purpose: "A technology-focused location associated with Dilmagia.", status: "Confirmed", notes: "Tracked as a Dilmagia sub-region until more route details are public." },
+  { slug: "olderion", name: "Olderion Federation", type: "Capital / water region", region: "Lapis", purpose: "The water-blessed region associated with Nichol and Aquapolis.", status: "Confirmed", notes: "Nichol is connected to the water-blessed Olderion Federation." },
+  { slug: "aquapolis", name: "Aquapolis", type: "City / sub-region", region: "Olderion", purpose: "A confirmed location within the Olderion setting.", status: "Confirmed", notes: "Tracked as an Olderion sub-region until more route details are public." },
+  { slug: "airship-routes", name: "Airship routes", type: "World traversal", region: "World map", purpose: "World map travel layer.", status: "Confirmed", notes: "Official footage shows airship travel across the HD-2D world map." },
+  { slug: "sanctums-of-light", name: "Sanctums of Light", type: "Vision-related site", region: "World map", purpose: "Sites connected to Vision Crystals and the Vision system.", status: "Confirmed", notes: "Exact shrine names and coordinates are not launch-verified." },
+  { slug: "esper-battle-sites", name: "Esper battle sites", type: "Optional battle", region: "World map", purpose: "Summon encounter locations.", status: "Reported", notes: "Ramuh and other Espers are tied to optional or story-linked encounters in current reports." },
+  { slug: "optional-dungeons", name: "Optional dungeons", type: "Dungeon", region: "World map", purpose: "Future dungeon checklist bucket.", status: "Reported", notes: "Dungeon categories are tracked as a map section until confirmed names and routes are public." },
+  { slug: "colosseum", name: "Colosseum", type: "Battle facility", region: "Side content", purpose: "A side-content location featuring deadly monsters and rewards.", status: "Confirmed", notes: "Complete rules and rewards will be added after launch." },
+  { slug: "chamber-of-arms", name: "Chamber of Arms", type: "Challenge area", region: "Side content", purpose: "A sealed challenge containing formidable foes within legendary weapons.", status: "Confirmed", notes: "Unlock requirements and rewards are pending release." },
+];
 
 export const sideContent = [
   { slug: "gilgamesh", name: "Gilgamesh", path: "/bosses/gilgamesh", type: "Character / optional encounter", summary: "The wandering swordmaster Gilgamesh is confirmed as part of Final Fantasy Resonance side content. His location, rewards and battle details remain unannounced.", status: "Confirmed" },
@@ -110,23 +116,24 @@ export const editions = [
   { name: "Collector's Edition", usd: "$209.99", game: true, deluxe: true, artbook: true, soundtrack: true, acrylic: true, card: true },
 ];
 
-export const routeMeta: Record<string, { title: string; description: string }> = {
+export const routeMeta: Record<string, { title: string; description: string; h1?: string }> = {
   game: { title: "Everything We Know About Final Fantasy Resonance", description: "A sourced game overview covering its story, systems, developer, release plan and relationship to Brave Exvius." },
   "release-date-platforms": { title: "Final Fantasy Resonance Release Date, Platforms & Price", description: "The October 22, 2026 release date, supported platforms, storefronts, physical formats and current launch status." },
   "editions-pre-order": { title: "Final Fantasy Resonance Preorder, Editions, Bonuses & Prices", description: "Compare Standard, Digital Deluxe and Collector's Editions, prices, contents and preorder rewards." },
   demo: { title: "Is There a Final Fantasy Resonance Demo?", description: "A platform-by-platform demo status tracker with a clear last-verified date." },
-  "pc-system-requirements": { title: "Final Fantasy Resonance PC System Requirements", description: "Official minimum and recommended PC specs, including CPU, GPU, DirectX 12, storage and 1080p performance targets from Steam." },
-  characters: { title: "Final Fantasy Resonance Characters", description: "Filter the known cast by group, combat role and evidence status." },
-  visions: { title: "FF Resonance Visions — Final Fantasy Resonance Database", description: "Visions are equippable records in Final Fantasy Resonance. Browse the 26-slot tracker by origin, role, element, ability and reveal status." },
+  "pc-system-requirements": { title: "FF Resonance PC Requirements", h1: "Final Fantasy Resonance PC System Requirements", description: "Official minimum and recommended PC specs, including CPU, GPU, DirectX 12, storage and 1080p performance targets from Steam." },
+  characters: { title: "Final Fantasy Resonance Characters List", h1: "Final Fantasy Resonance Characters - All Confirmed & Playable Characters", description: "Complete Final Fantasy Resonance characters list, covering story characters, playable party members, Vision characters, cast status and sourced profiles." },
+  visions: { title: "Final Fantasy Resonance Visions List", h1: "Final Fantasy Resonance Visions List - All Confirmed Visions", description: "All confirmed Final Fantasy Resonance Visions in one searchable list, including origin game, role, element, known ability, reveal status and guide links." },
+  locations: { title: "FF Resonance Map & Locations", h1: "Final Fantasy Resonance Map & Locations - World Map, Regions and Areas", description: "World map hub for Final Fantasy Resonance with known regions, towns, dungeons, Vision shrines, Esper locations and evidence status." },
   combat: { title: "Final Fantasy Resonance Combat Explained", description: "Turn order, party size, Stagger, Extra Phase, Visions, difficulty and battle-speed settings." },
   "stagger-system": { title: "Final Fantasy Resonance Stagger System", description: "How weaknesses, Stagger Gauges, bonus actions and Sweeping Stagger connect." },
   "resonance-attacks": { title: "Final Fantasy Resonance Attacks Database", description: "Known Resonance attack triggers, effects and connected Visions, with evidence status." },
-  espers: { title: "Final Fantasy Resonance Espers & Summons", description: "Known Espers, how they are obtained, their three-turn battle behavior and reveal status." },
+  espers: { title: "FF Resonance Espers & Summons", h1: "Final Fantasy Resonance Espers & Summons - All Confirmed Espers", description: "All confirmed Final Fantasy Resonance Espers and summons, including summon behavior, unlock routes, Esper locations, boss battles and evidence status." },
+  "beginner-guide": { title: "Final Fantasy Resonance Beginner Guide", h1: "Final Fantasy Resonance Beginner Guide - Everything to Know Before Playing", description: "Pre-release beginner guide for Final Fantasy Resonance covering characters, combat, Stagger, Visions, Espers, world exploration, platforms and PC requirements." },
   "brave-exvius-comparison": { title: "Final Fantasy Resonance vs Brave Exvius", description: "A direct comparison of story, combat, platform and business model — including why Resonance is not a gacha game." },
-  locations: { title: "Final Fantasy Resonance Locations", description: "A confirmed location database covering Dilmagia, Olderion, Sanctums of Light, the Colosseum and Chamber of Arms." },
   "how-to-get-visions": { title: "How to Get Visions in Final Fantasy Resonance", description: "What is currently confirmed about Vision Crystals, Sanctums of Light and Vision unlocks before launch." },
   "sanctums-of-light": { title: "Sanctums of Light — Final Fantasy Resonance", description: "Confirmed information about Sanctums of Light and their connection to Vision Crystals." },
-  preorder: { title: "Final Fantasy Resonance Preorder — Editions, Bonuses & Prices", description: "A launch-window tracker for preorder bonuses, editions and official prices." },
+  preorder: { title: "FF Resonance Preorder Guide", h1: "Final Fantasy Resonance Preorder - Editions, Bonuses & Prices", description: "A launch-window tracker for preorder bonuses, editions and official prices." },
   "switch-vs-switch-2": { title: "Final Fantasy Resonance Switch vs Switch 2", description: "Compare file size, save transfer, upgrade path, compatibility and purchase considerations." },
   "gilgamesh": { title: "Gilgamesh — Final Fantasy Resonance", description: "Confirmed information about the wandering swordmaster Gilgamesh and the details still unknown until launch." },
   "ultima-weapon": { title: "Ultima Weapon — Final Fantasy Resonance Boss Guide", description: "Confirmed side-content information about Ultima Weapon, with unrevealed fight details clearly marked." },

@@ -448,6 +448,8 @@ tbody tr:hover { background: rgba(142,232,225,.035); }
 .esper-record,
 .comparison-record,
 .game-overview-record,
+.location-record,
+.beginner-record,
 .vision-dossier { display: grid; gap: 76px; }
 
 .record-section-heading { display: grid; grid-template-columns: 42px minmax(0,1fr); gap: 18px; align-items: start; margin-bottom: 26px; }
@@ -484,6 +486,30 @@ tbody tr:hover { background: rgba(142,232,225,.035); }
 .record-concept-card p { margin: 0; color: var(--muted); font-size: 14px; }
 .directory-browser > .entity-grid,
 .directory-browser > .vision-grid { margin-top: 18px; }
+.record-table-section { min-width: 0; }
+.record-table-wrap table { min-width: 880px; }
+.record-table-wrap th .status { margin-left: 9px; vertical-align: middle; }
+.record-table-wrap td a { display: inline-flex; align-items: center; gap: 6px; color: var(--crystal); font-size: 12px; font-weight: 800; text-transform: uppercase; }
+.record-table-wrap td a svg { width: 14px; }
+.quick-index-section { min-width: 0; }
+.quick-index-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 10px; }
+.quick-index-grid > a,
+.quick-index-grid > article { min-height: 132px; display: flex; flex-direction: column; padding: 18px 20px; background: linear-gradient(145deg,#101c28,#080f17); border: 1px solid var(--line); }
+.quick-index-grid > a { transition: transform .18s ease, border-color .18s ease; }
+.quick-index-grid > a:hover { transform: translateY(-3px); border-color: #47727b; }
+.quick-index-grid span { min-height: 22px; display: inline-flex; align-items: center; gap: 7px; color: var(--gold); font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.quick-index-grid b { margin-top: 18px; color: #e0e6e7; font: 500 21px/1.15 var(--display); }
+.quick-index-grid small { margin-top: 8px; color: var(--muted); font-size: 13px; line-height: 1.5; }
+.quick-index-grid > a > svg { width: 16px; align-self: flex-end; margin-top: auto; color: var(--crystal); }
+.topic-card-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 10px; }
+.topic-card-grid > a { min-height: 155px; display: grid; grid-template-columns: 34px minmax(0,1fr) 18px; gap: 13px; align-items: start; padding: 18px; background: #0b151f; border: 1px solid var(--line); transition: transform .18s ease, border-color .18s ease; }
+.topic-card-grid > a:hover { transform: translateY(-3px); border-color: #47727b; }
+.topic-card-grid > a > div { color: var(--crystal); }
+.topic-card-grid svg { width: 20px; }
+.topic-card-grid span { display: grid; gap: 7px; }
+.topic-card-grid b { font: 500 18px/1.15 var(--display); }
+.topic-card-grid small { color: var(--muted); font-size: 13px; line-height: 1.5; }
+.map-hero .rule-symbol svg { width: 36px; height: 36px; }
 
 /* Release, platform and demo records */
 .release-date-panel { min-height: 265px; display: grid; grid-template-columns: 205px minmax(0,1fr); gap: 44px; align-items: center; padding: 36px 44px; background: radial-gradient(circle at 10% 50%,rgba(56,170,172,.13),transparent 25%),linear-gradient(120deg,#0d202a,#081019 74%); border: 1px solid #315b63; }
@@ -816,10 +842,14 @@ tbody tr:hover { background: rgba(142,232,225,.035); }
   .esper-record,
   .comparison-record,
   .game-overview-record,
+  .location-record,
+  .beginner-record,
   .vision-dossier { gap: 58px; }
   .roster-group-grid,
   .system-summary-grid,
-  .mechanic-card-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .mechanic-card-grid,
+  .quick-index-grid,
+  .topic-card-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .platform-card-grid,
   .ability-card-grid,
   .esper-card-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
@@ -934,6 +964,8 @@ tbody tr:hover { background: rgba(142,232,225,.035); }
   .esper-record,
   .comparison-record,
   .game-overview-record,
+  .location-record,
+  .beginner-record,
   .vision-dossier { gap: 46px; }
   .record-section-heading { grid-template-columns: 27px minmax(0,1fr); gap: 10px; }
   .record-section-heading > div { padding-left: 13px; }
@@ -949,6 +981,8 @@ tbody tr:hover { background: rgba(142,232,225,.035); }
   .vision-field-grid,
   .related-records > div,
   .related-vision-grid,
+  .quick-index-grid,
+  .topic-card-grid,
   .system-jump-grid,
   .overview-jump-grid { grid-template-columns: 1fr; }
   .release-date-panel { grid-template-columns: 1fr; gap: 25px; padding: 22px; }

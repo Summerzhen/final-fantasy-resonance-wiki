@@ -27,6 +27,8 @@ const searchDestinations = [
   { href: "/editions-pre-order", label: "Editions & pre-order", group: "Launch" },
   { href: "/demo", label: "Demo tracker", group: "Launch" },
   { href: "/pc-system-requirements", label: "PC requirements", group: "Launch" },
+  { href: "/locations", label: "Map & locations", group: "World" },
+  { href: "/beginner-guide", label: "Beginner guide", group: "Guides" },
   { href: "/stagger-system", label: "Stagger system", group: "Systems" },
   { href: "/resonance-attacks", label: "Resonance attacks", group: "Systems" },
   { href: "/brave-exvius-comparison", label: "Brave Exvius comparison", group: "Game" },
@@ -266,9 +268,9 @@ export function SiteFooter() {
           <p>An independent, evidence-led player database for Final Fantasy Resonance.</p>
           <span className="footer-coordinate">ARCHIVE // LPS-2026</span>
         </div>
-        <FooterColumn title="Explore" links={[["Game overview", "/game"], ["Characters", "/characters"], ["Visions", "/visions"], ["Locations", "/locations"]]} />
+        <FooterColumn title="Explore" links={[["Game overview", "/game"], ["Characters", "/characters"], ["Visions", "/visions"], ["Map", "/locations"]]} />
         <FooterColumn title="Release" links={[["Platforms", "/release-date-platforms"], ["Preorder", "/preorder"], ["Editions", "/editions-pre-order"], ["PC requirements", "/pc-system-requirements"]]} />
-        <FooterColumn title="Systems" links={[["Stagger", "/stagger-system"], ["Resonance attacks", "/resonance-attacks"], ["Espers", "/espers"], ["FFBE comparison", "/brave-exvius-comparison"]]} />
+        <FooterColumn title="Systems" links={[["Beginner guide", "/beginner-guide"], ["Stagger", "/stagger-system"], ["Resonance attacks", "/resonance-attacks"], ["Espers", "/espers"], ["FFBE comparison", "/brave-exvius-comparison"]]} />
       </div>
       <div className="legal">Final Fantasy Resonance Wiki is an independent fan-made reference site. FINAL FANTASY, FINAL FANTASY RESONANCE, related characters, artwork and game assets are trademarks or copyrighted works of Square Enix Holdings Co., Ltd. and/or its affiliates. Original editorial text, design and data organization © 2026 final-fantasy-resonance.wiki.</div>
     </footer>
@@ -298,9 +300,10 @@ export function SourcePanel() {
 }
 
 export const hubCards = [
-  { href: "/characters", icon: BookOpen, title: "Characters", count: "9 known", copy: "Main party, allies and the Sworn Six." },
+  { href: "/characters", icon: BookOpen, title: "Characters", count: "All cast", copy: "Story characters, playable status and Vision characters." },
   { href: "/visions", icon: Sparkles, title: "Visions", count: "26 slots", copy: "Roles, origins, abilities and reveal status." },
-  { href: "/combat", icon: Swords, title: "Combat systems", count: "8 mechanics", copy: "Turn order, Stagger and Resonance attacks." },
+  { href: "/locations", icon: Database, title: "Map & locations", count: "World hub", copy: "Regions, towns, dungeons, shrines and Espers." },
+  { href: "/beginner-guide", icon: Swords, title: "Beginner guide", count: "Start here", copy: "Characters, combat, Visions, Espers and platforms." },
   { href: "/release-date-platforms", icon: Database, title: "Launch database", count: "5 platforms", copy: "Dates, stores, editions and demo status." },
 ];
 

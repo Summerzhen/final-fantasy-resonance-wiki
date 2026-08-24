@@ -50,7 +50,7 @@ function getEntitySeo(locale: string, slug: string): EntitySeo | undefined {
 
     return {
       name: character.name,
-      title: `${character.name} in Final Fantasy Resonance - Profile & Combat Info`,
+      title: `${character.name} Character Guide`,
       description: `${character.summary} Explore ${character.name}'s sourced Final Fantasy Resonance profile, affiliation, role details, and evidence status.`,
       path: `/characters/${character.slug}`,
       sectionName: "Characters",
@@ -66,7 +66,7 @@ function getEntitySeo(locale: string, slug: string): EntitySeo | undefined {
 
     return {
       name: vision.name,
-      title: `${vision.name} – Final Fantasy Resonance Vision, Abilities & Resonance`,
+      title: `${vision.name} Vision Guide`,
       description: `${vision.name} is a ${vision.status.toLowerCase()} Vision from ${vision.game} in Final Fantasy Resonance. View its current role, elements, known ability, and evidence status.`,
       path: `/visions/${vision.slug}`,
       sectionName: "Visions",

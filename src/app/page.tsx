@@ -40,7 +40,7 @@ export default function HomePage() {
             <div className="hero-actions">
               <Link className="primary-button" href="/visions">Browse Visions <ArrowRight /></Link>
               <Link className="ghost-button" href="/characters">Browse characters <ArrowUpRight /></Link>
-              <Link className="ghost-button" href="/game">Read the game brief <ArrowUpRight /></Link>
+              <Link className="ghost-button" href="/locations">World map <ArrowUpRight /></Link>
             </div>
             <div className="chips" aria-label="Game facts">
               <span><CalendarDays />Oct 22, 2026</span>
@@ -97,7 +97,7 @@ export default function HomePage() {
         <section className="archive-hubs">
           <div className="section-intro-row">
             <SectionHeading eyebrow="BROWSE THE ARCHIVE" title="Start with a record, not a headline" copy="Structured pages surface the answer first, then show exactly where every fact came from." />
-            <p className="section-code">INDEX / 01鈥?4<br />LIVE DATA LAYER</p>
+            <p className="section-code">INDEX / 01-05<br />LIVE DATA LAYER</p>
           </div>
           <DataHubCards />
         </section>
