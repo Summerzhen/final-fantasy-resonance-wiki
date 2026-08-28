@@ -5,6 +5,7 @@ export const NAVIGATION = [
   { label: "Map", href: "/locations" },
   { label: "Combat", href: "/combat" },
   { label: "Espers", href: "/espers" },
+  { label: "Endgame", href: "/endgame" },
   { label: "Release", href: "/release-date-platforms" },
   { label: "Beginner", href: "/beginner-guide" },
 ] as const;
@@ -15,7 +16,7 @@ export const NAVIGATION_CONFIG = NAVIGATION.map((item) => ({ key: item.label.toL
 export const INDEXABLE_ROUTES = [
   "/", "/game", "/release-date-platforms", "/editions-pre-order", "/demo",
   "/preorder", "/switch-vs-switch-2", "/how-to-get-visions", "/locations", "/locations/sanctums-of-light",
-  "/bosses/gilgamesh", "/bosses/ultima-weapon", "/chamber-of-arms", "/colosseum",
+  "/endgame", "/bosses/gilgamesh", "/bosses/ultima-weapon", "/chamber-of-arms", "/colosseum",
   "/pc-system-requirements", "/characters", "/characters/rain", "/characters/lasswell",
   "/characters/fina", "/visions", "/visions/warrior-of-light", "/visions/cloud",
   "/visions/terra", "/visions/yshtola", "/combat", "/stagger-system",

@@ -23,7 +23,7 @@ import { Breadcrumbs, SourcePanel, StatusBadge } from "./ffr-site";
 import { CharacterExplorer, VisionExplorer } from "./data-explorers";
 import { characters, combatFacts, editions, espers, facts, locations, platforms, routeMeta, sideContent, visions } from "@/lib/ffr-data";
 
-const verified = "August 13, 2026";
+const verified = "August 28, 2026";
 
 export function StandardPage({ route }: { route: string }) {
   const meta = routeMeta[route];
@@ -56,7 +56,7 @@ function renderBody(route: string) {
   if (route === "espers") return <EsperAtlas />;
   if (route === "beginner-guide") return <BeginnerGuidePage />;
   if (route === "brave-exvius-comparison") return <ComparisonPage />;
-  if (["locations", "how-to-get-visions", "sanctums-of-light", "preorder", "switch-vs-switch-2", "gilgamesh", "ultima-weapon", "chamber-of-arms", "colosseum"].includes(route)) return <ConfirmedInformationPage route={route} />;
+  if (["locations", "how-to-get-visions", "sanctums-of-light", "preorder", "switch-vs-switch-2", "endgame", "gilgamesh", "ultima-weapon", "chamber-of-arms", "colosseum"].includes(route)) return <ConfirmedInformationPage route={route} />;
   return <GameOverview />;
 }
 
@@ -73,8 +73,8 @@ function ConfirmedInformationPage({ route }: { route: string }) {
         copy="This page separates confirmed facts from details that Square Enix has not announced. It will be expanded when the game launches on October 22, 2026."
       />
       {isLocations && <section className="record-section"><SectionLabel index="01" title="Confirmed locations" id="confirmed-locations" copy="No chests, shops or quest routes are guessed before release." /><div className="field-card-grid">{locations.map((location) => <article className="field-card" key={location.slug}><small>{location.type}</small><strong>{location.name}</strong><p>{location.purpose}</p><StatusBadge status={location.status} /></article>)}</div></section>}
-      {isVisionAccess && <section className="record-section"><SectionLabel index="01" title="What is confirmed" id="vision-access-facts" /><div className="field-card-grid"><FieldCard label="Resource" value="Vision Crystals" status="Confirmed" /><FieldCard label="Connected site" value="Sanctums of Light" status="Confirmed" /><FieldCard label="Unlock details" value="Not officially revealed" status="Unknown" /><FieldCard label="Next links" value="Vision list, Squall, Tidus and Zidane" status="Reported" /></div><p className="record-copy">Use this page as the bridge between the Vision database, individual Vision records and the world locations where Vision-related content appears. Exact unlock requirements will be updated after launch.</p></section>}
-      {content && <section className="record-section"><SectionLabel index="01" title="Confirmed information" id="confirmed-information" /><div className="field-card-grid"><FieldCard label="Status" value="Officially confirmed" status="Confirmed" /><FieldCard label="Location" value="Not officially revealed" status="Unknown" /><FieldCard label="Weaknesses" value="Available after launch" status="Unknown" /><FieldCard label="Rewards" value="Available after launch" status="Unknown" /></div><p className="record-copy">The page is intentionally launch-ready: the confirmed entity is indexed now, while location, encounter rules, rewards and strategy will be added only when verified.</p></section>}
+      {isVisionAccess && <section className="record-section"><SectionLabel index="01" title="What is confirmed" id="vision-access-facts" /><div className="field-card-grid"><FieldCard label="Resource" value="Vision Crystals" status="Confirmed" /><FieldCard label="Connected site" value="Sanctums of Light" status="Confirmed" /><FieldCard label="Upgrade material" value="Magicite" status="Confirmed" /><FieldCard label="Awakening stages" value="Three stages" status="Confirmed" /></div><p className="record-copy">Vision Crystals are obtained at Sanctums of Light. Magicite awakens Visions, unlocks stronger abilities and higher-level skills, and is found in dungeons, treasure chests or as a reward for defeating powerful monsters.</p></section>}
+      {content && <section className="record-section"><SectionLabel index="01" title={route === "endgame" ? "Confirmed endgame content" : "Confirmed information"} id="confirmed-information" /><div className="field-card-grid">{route === "endgame" ? <><FieldCard label="Mighty Foes" value="Powerful cave monsters reward magicite" status="Confirmed" /><FieldCard label="Secret Dungeons" value="Optional high-difficulty dungeons" status="Confirmed" /><FieldCard label="Gilgamesh" value="Big bridge battle teased" status="Confirmed" /><FieldCard label="Ultima Weapon" value="Formidable final optional foe" status="Confirmed" /><FieldCard label="Magicite" value="Used to awaken Visions" status="Confirmed" /></> : <><FieldCard label="Status" value="Officially confirmed" status="Confirmed" /><FieldCard label="Location" value="Not officially revealed" status="Unknown" /><FieldCard label="Weaknesses" value="Available after launch" status="Unknown" /><FieldCard label="Rewards" value="Available after launch" status="Unknown" /></>}</div><p className="record-copy">{route === "endgame" ? "This hub keeps the newest completionist information together instead of splitting thin pages for every boss, dungeon and reward before launch." : "The page is intentionally launch-ready: the confirmed entity is indexed now, while location, encounter rules, rewards and strategy will be added only when verified."}</p></section>}
       {route === "preorder" && <section className="record-section"><SectionLabel index="01" title="Editions and preorder coverage" id="preorder-editions" /><div className="field-card-grid">{editions.map((edition) => <FieldCard key={edition.name} label={edition.name} value={edition.usd} status="Confirmed" />)}<FieldCard label="Preorder bonus" value="Official details tracked here" status="Confirmed" /><FieldCard label="Early purchase bonus" value="Official details tracked here" status="Confirmed" /></div></section>}
       {route === "switch-vs-switch-2" && <section className="record-section"><SectionLabel index="01" title="Version comparison" id="switch-comparison" /><div className="field-card-grid"><FieldCard label="Switch file size" value="8.8 GB" status="Confirmed" /><FieldCard label="Switch 2 file size" value="12.7 GB" status="Confirmed" /><FieldCard label="Save transfer" value="Not supported between versions" status="Confirmed" /><FieldCard label="Upgrade pack" value="No plan announced" status="Confirmed" /></div></section>}
       <nav className="system-jump-grid" aria-label="Connected records"><Link href="/visions"><Sparkles /><span><small>DATABASE</small><b>Vision records</b></span><ArrowUpRight /></Link><Link href="/locations"><Database /><span><small>WORLD</small><b>All locations</b></span><ArrowUpRight /></Link><Link href="/release-date-platforms"><Clock3 /><span><small>LAUNCH</small><b>Release and platforms</b></span><ArrowUpRight /></Link></nav>
@@ -164,7 +164,7 @@ function VisionDirectory() {
   }, {});
   return (
     <div className="vision-directory">
-      <InfoCallout title="What are Visions?" value="Equippable legacy-hero records used in Final Fantasy Resonance combat" copy="This all Visions list tracks each revealed Vision's origin, role, elements, known ability and evidence status, then links to dedicated records for confirmed or observed entries." />
+      <InfoCallout title="Current Vision answer" value="25 of 26 Final Fantasy Resonance Visions are now identified" copy="As of August 28, 2026, the public list includes all 16 mainline Final Fantasy representatives plus Brave Exvius-side Visions. One Vision slot remains unrevealed." />
       <div className="status-strip vision-status-strip">
         <Metric value={visions.length} label="Total slots" />
         <Metric value={visions.filter((vision) => vision.status === "Confirmed").length} label="Confirmed" />
@@ -199,7 +199,7 @@ function VisionDirectory() {
           <RecordConcept icon={<Sparkles />} title="Ability record" copy="A named move or the clearest sourced description of the known toolkit." />
         </div>
       </section>
-      <section className="resonance-rule-panel" aria-labelledby="unlock-visions-heading"><ListChecks /><div><span>UNLOCK GUIDE STATUS</span><h2 id="unlock-visions-heading">How to unlock Visions</h2><p>Vision unlock routes, shrine names and leveling details are tracked as pre-release fields until launch verification is available.</p></div><Link href="/beginner-guide">Read beginner guide <ArrowUpRight /></Link></section>
+      <section className="resonance-rule-panel" aria-labelledby="unlock-visions-heading"><ListChecks /><div><span>UNLOCK AND UPGRADE</span><h2 id="unlock-visions-heading">How to unlock and awaken Visions</h2><p>Vision Crystals are obtained through Sanctums of Light around the world. Magicite awakens Visions in three stages, unlocking stronger abilities, higher-level skills and magic; magicite is limited and found in dungeons, treasure chests and powerful-monster rewards.</p></div><Link href="/how-to-get-visions">Unlock guide <ArrowUpRight /></Link></section>
       <section className="directory-browser" aria-labelledby="vision-browser-heading">
         <SectionLabel index="05" title="Browse all 26 slots" id="vision-browser-heading" copy="Unknown slots stay visible so the database never turns an unrevealed name into a guess." />
         <VisionExplorer data={visions} />
@@ -330,7 +330,7 @@ function LocationsPage() {
   }, {});
   return (
     <div className="location-record">
-      <section className="rule-hero map-hero" aria-labelledby="world-map-heading"><div className="rule-symbol"><Map /></div><div><span>WORLD MAP HUB</span><h2 id="world-map-heading">Final Fantasy Resonance World Map</h2><p>This page collects known regions, towns, dungeons, Vision shrines, Esper locations and important landmarks without splitting empty map pages before launch.</p></div></section>
+      <section className="rule-hero map-hero" aria-labelledby="world-map-heading"><div className="rule-symbol"><Map /></div><div><span>WORLD MAP HUB</span><h2 id="world-map-heading">Final Fantasy Resonance World Map</h2><p>This page now tracks Zoldaad, Mysidia, Sanctums of Light, Mighty Foes, Secret Dungeons, Esper sites and important landmarks without splitting empty map pages before launch.</p></div></section>
       <div className="status-strip">
         <Metric value={locations.length} label="Tracked map records" />
         <Metric value={locations.filter((location) => location.type.includes("Town") || location.type.includes("Kingdom")).length} label="Towns / regions" />
@@ -391,6 +391,7 @@ function CombatSystemPage() {
         <SectionLabel index="02" title="Turn-to-Resonance sequence" id="combat-sequence-heading" />
         <ol className="rule-flow combat-rule-flow">{phases.map(([number, title, copy]) => <li key={number}><span>{number}</span><div><h3>{title}</h3><p>{copy}</p></div><ArrowRight /></li>)}</ol>
       </section>
+      <section className="resonance-rule-panel" aria-labelledby="limit-burst-heading"><Zap /><div><span>LIMIT BURSTS</span><h2 id="limit-burst-heading">Limit gauges reward pressure and survival</h2><p>Characters can unleash Limit Bursts after filling a limit gauge. Current official material says the gauge fills when a character staggers an enemy or takes damage, with effects ranging from heavy offense to battle support.</p></div><StatusBadge status="Confirmed" /></section>
       <nav className="system-jump-grid" aria-label="Connected combat records"><Link href="/stagger-system"><Zap /><span><small>MECHANIC</small><b>Stagger system</b></span><ArrowUpRight /></Link><Link href="/resonance-attacks"><Sparkles /><span><small>DATABASE</small><b>Resonance attacks</b></span><ArrowUpRight /></Link><Link href="/visions"><Shield /><span><small>EQUIPMENT</small><b>Vision records</b></span><ArrowUpRight /></Link></nav>
     </div>
   );
@@ -437,8 +438,8 @@ function ResonancePage() {
 function EsperAtlas() {
   return (
     <div className="esper-record">
-      <InfoCallout title="Espers are summons" value="Final Fantasy Resonance Espers & Summons share the same player intent" copy="This page uses Espers as the official database label while also answering summons, all summons, confirmed espers and FF Resonance summons searches." />
-      <section className="esper-behavior" aria-labelledby="esper-behavior-heading"><div><Sparkles /></div><span>SUMMON BEHAVIOR</span><h2 id="esper-behavior-heading">Three-turn battlefield ally</h2><p>Espers fight alongside the party and deliver a powerful finishing move before departing. Summoning consumes substantial MP.</p><StatusBadge status="Confirmed" /></section>
+      <InfoCallout title="Espers are summons" value="9 confirmed Espers, including Carbuncle, Leviathan, Odin and Bahamut" copy="This page uses Espers as the official database label while also answering summons, all summons, confirmed espers and FF Resonance summons searches." />
+      <section className="esper-behavior" aria-labelledby="esper-behavior-heading"><div><Sparkles /></div><span>SUMMON BEHAVIOR</span><h2 id="esper-behavior-heading">Three-turn battlefield ally</h2><p>Espers join battle for three turns, then unleash an immensely destructive signature attack before departing. Known finishers now include Ruby Light, Tsunami, Zantetsuken and Megaflare.</p><StatusBadge status="Confirmed" /></section>
       <section className="esper-atlas" aria-labelledby="esper-atlas-heading">
         <SectionLabel index="01" title="Known Esper atlas" id="esper-atlas-heading" copy="Acquisition wording and battle behavior remain individually labeled by evidence state." />
         <div className="esper-card-grid">
@@ -448,7 +449,7 @@ function EsperAtlas() {
       <section className="quick-index-section" aria-labelledby="esper-guide-heading">
         <SectionLabel index="02" title="Esper and Summon Guide Topics" id="esper-guide-heading" copy="Launch-day details stay separated from confirmed pre-release behavior." />
         <div className="quick-index-grid">
-          <article><span>WORK</span><b>How Espers Work</b><small>Three-turn ally behavior, finishing move and MP cost are the confirmed system frame.</small></article>
+          <article><span>WORK</span><b>How Espers Work</b><small>Three-turn ally behavior and a finishing move are the confirmed system frame.</small></article>
           <article><span>UNLOCK</span><b>How to Unlock Espers</b><small>Exact unlock quests and requirements are tracked as unknown or reported until confirmed.</small></article>
           <article><span>MAP</span><b>Esper Locations</b><small>Location rows connect to the world map hub once names and routes are verified.</small></article>
           <article><span>BOSS</span><b>Esper Boss Battles</b><small>Ramuh and other Esper encounters remain evidence-labeled rather than filled with guessed mechanics.</small></article>
@@ -546,7 +547,7 @@ export function CharacterPage({ slug }: { slug: string }) {
   if (character.summary.toLowerCase().includes("esper") || character.summary.toLowerCase().includes("bahamut")) connectedSystems.splice(2, 0, { href: "/espers", label: "Espers and summons", detail: "Review the confirmed summons and their battlefield behavior." });
   const playable = character.group === "Antagonists" ? "Not announced" : "Shown with the party";
   return (
-    <EntityPage kind="Character" name={character.name} summary={character.summary} status={character.status}>
+    <EntityPage kind="Character" name={`${character.name} - Final Fantasy Resonance Character Guide`} summary={character.summary} status={character.status}>
       <div className="character-dossier">
         <aside className="character-identity-panel">
           <div className="identity-monogram">{character.name.slice(0, 2).toUpperCase()}</div>
@@ -593,7 +594,7 @@ export function VisionPage({ slug }: { slug: string }) {
         </section>
         <section className="vision-field-panel" aria-labelledby="vision-fields-heading">
           <SectionLabel index="01" title="Vision field matrix" id="vision-fields-heading" />
-          <div className="field-card-grid vision-field-grid"><FieldCard label="Origin" value={vision.game} status={vision.status} /><FieldCard label="Role" value={vision.role} status={vision.status} /><FieldCard label="Element" value={vision.element} status={vision.status} /><FieldCard label="Known ability" value={vision.ability} status={vision.status} /><FieldCard label="Unlock route" value="Sanctum or character event; exact route not announced" status="Reported" /></div>
+          <div className="field-card-grid vision-field-grid"><FieldCard label="Origin" value={vision.game} status={vision.status} /><FieldCard label="Role" value={vision.role} status={vision.status} /><FieldCard label="Element" value={vision.element} status={vision.status} /><FieldCard label="Known ability" value={vision.ability} status={vision.status} /><FieldCard label="Unlock route" value="Sanctums of Light grant Vision Crystals" status="Confirmed" /><FieldCard label="Awakening" value="Magicite upgrades Visions in three stages" status="Confirmed" /></div>
         </section>
         <section className="resonance-rule-panel" aria-labelledby="vision-rule-heading"><Sparkles /><div><span>RESONANCE USE</span><h2 id="vision-rule-heading">One choice after Sweeping Stagger</h2><p>After every enemy is staggered, one party member can unleash the cinematic Resonance attack belonging to their equipped Vision. Only one Resonance can be chosen during each party bonus phase.</p></div><Link href="/resonance-attacks">Open attack database <ArrowUpRight /></Link></section>
         <section className="related-vision-panel" aria-labelledby="related-vision-heading"><SectionLabel index="02" title="Associated Vision records" id="related-vision-heading" copy="Prioritized by shared origin first, then shared role." /><div className="related-vision-grid">{relatedVisions.map((related) => <Link href={`/visions/${related.slug}`} key={related.slug}><span>{related.numeral}</span><div><small>{related.game}</small><h3>{related.name}</h3><p>{related.role} · {related.element}</p></div><ArrowUpRight /></Link>)}</div></section>

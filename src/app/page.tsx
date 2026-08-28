@@ -11,7 +11,7 @@ import {
   Sparkles,
   Users,
 } from "lucide-react";
-import { characters, facts, platforms, visions } from "@/lib/ffr-data";
+import { characters, espers, facts, platforms, visions } from "@/lib/ffr-data";
 import { DataHubCards, SectionHeading, SourcePanel, StatusBadge } from "@/components/ffr-site";
 import { AdSlot, NativeContentAd, StickyTopAd } from "@/components/adsterra-ads";
 
@@ -19,7 +19,16 @@ const combatLoop = [
   ["01", "Read the field", "Find elemental weaknesses and cut the Stagger Gauge faster."],
   ["02", "Break the rhythm", "Empty a gauge to stagger an enemy and interrupt its plan."],
   ["03", "Claim the phase", "The character landing the break earns an end-of-turn action."],
-  ["04", "Call a Vision", "Stagger every enemy to unlock one cinematic Resonance attack."],
+  ["04", "Call a Vision", "Stagger every enemy to unlock one cinematic Resonance attack or build toward a Limit Burst."],
+];
+
+const latestUpdateCards = [
+  { href: "/visions", label: "25 / 26 Visions Revealed", detail: "Firion, Onion Knight, Vaan, Lightning, Noctis and Clive are now identified." },
+  { href: "/how-to-get-visions", label: "Vision Awakening", detail: "Magicite awakens Visions in three stages and unlocks stronger abilities." },
+  { href: "/combat", label: "Limit Bursts", detail: "Limit gauges fill from Stagger pressure or taking damage." },
+  { href: "/espers", label: "9 Espers Confirmed", detail: "Carbuncle, Leviathan, Odin and Bahamut now have listed finishers." },
+  { href: "/locations", label: "Zoldaad & Mysidia", detail: "The Fire Crystal and Ice Crystal regions are now tracked in the map hub." },
+  { href: "/endgame", label: "Endgame Content", detail: "Mighty Foes, Secret Dungeons, Gilgamesh and Ultima Weapon are confirmed." },
 ];
 
 export default function HomePage() {
@@ -48,7 +57,7 @@ export default function HomePage() {
               <span><Users />Single-player</span>
               <span><ShieldCheck />No gacha</span>
             </div>
-            <p className="verified-line"><ShieldCheck /> Sourced from official material <span /> Last verified Aug 13, 2026</p>
+            <p className="verified-line"><ShieldCheck /> Sourced from official material <span /> Last verified Aug 28, 2026</p>
           </div>
 
           <div className="hero-visual">
@@ -85,6 +94,23 @@ export default function HomePage() {
         <NativeContentAd />
       </div>
 
+      <section className="latest-update-section content-shell">
+        <div className="section-intro-row">
+          <SectionHeading eyebrow="LATEST UPDATE" title="August 24 reveal added to the archive" copy={`${confirmed} of 26 Visions and ${espers.length} Espers are now tracked, alongside Vision Awakening, Limit Bursts, Zoldaad, Mysidia and completionist content.`} />
+          <Link className="text-link" href="/endgame">Open endgame hub <ArrowUpRight /></Link>
+        </div>
+        <div className="quick-index-grid">
+          {latestUpdateCards.map((card) => (
+            <Link href={card.href} key={card.href}>
+              <span>NEW</span>
+              <b>{card.label}</b>
+              <small>{card.detail}</small>
+              <ArrowUpRight />
+            </Link>
+          ))}
+        </div>
+      </section>
+
       <section className="snapshot" aria-label="Release snapshot">
         <div className="content-shell snapshot-grid">
           {facts.slice(0, 5).map(([label, value, status], index) => (
@@ -114,14 +140,14 @@ export default function HomePage() {
             <div className="feature-art-label"><span>VISUAL RECORD</span><strong>Legacy heroes, rebuilt as battle roles.</strong></div>
           </div>
           <div className="feature-copy">
-            <SectionHeading eyebrow="VISION TRACKER" title={`${confirmed} of 26 named or observed`} copy="One legacy hero slot is reported for each mainline Final Fantasy from I鈥揦VI, alongside ten Resonance and Brave Exvius-side Visions." />
+            <SectionHeading eyebrow="VISION TRACKER" title={`${confirmed} of 26 named or observed`} copy="The mainline Final Fantasy I-XVI set is now identified, alongside Brave Exvius-side Visions and one remaining unrevealed slot." />
             <div className="progress-meta"><span>REVEAL PROGRESS</span><b>{Math.round((confirmed / 26) * 100)}%</b></div>
             <div className="progress" aria-label={`${confirmed} of 26 Visions revealed`}><i style={{ width: `${(confirmed / 26) * 100}%` }} /></div>
             <div className="mini-list">
               {visibleVisions.map((vision) => (
                 <Link href={`/visions/${vision.slug}`} key={vision.slug}>
                   <span>{vision.numeral}</span>
-                  <div><b>{vision.name}</b><small>{vision.role} 路 {vision.element}</small></div>
+                  <div><b>{vision.name}</b><small>{vision.role} / {vision.element}</small></div>
                   <StatusBadge status={vision.status} />
                   <ArrowUpRight className="mini-arrow" />
                 </Link>
@@ -153,7 +179,7 @@ export default function HomePage() {
 
         <section className="combat-band">
           <div className="combat-heading">
-            <SectionHeading eyebrow="COMBAT LOOP" title="Break the field. Earn the moment." copy="A readable four-step rhythm connects weaknesses, Stagger and each Vision鈥檚 defining attack." />
+            <SectionHeading eyebrow="COMBAT LOOP" title="Break the field. Earn the moment." copy="A readable four-step rhythm connects weaknesses, Stagger and each Vision's defining attack." />
             <Link className="ghost-button" href="/combat">Combat systems <ArrowRight /></Link>
           </div>
           <div className="combat-flow">
@@ -178,7 +204,7 @@ export default function HomePage() {
             <SectionHeading eyebrow="QUICK ANSWERS" title="What players are asking" />
             <details open><summary><span>01</span>Is Final Fantasy Resonance a gacha game?<ChevronRight /></summary><p>No. It is a premium, single-player RPG. Visions are earned through play rather than random pulls.</p></details>
             <details><summary><span>02</span>Is it a remake of Brave Exvius?<ChevronRight /></summary><p>It extensively rebuilds the first Brave Exvius story arc with rewritten dialogue, new presentation and systems designed for a standalone console RPG.</p></details>
-            <details><summary><span>03</span>Is there a demo?<ChevronRight /></summary><p>No public demo has been announced as of August 13, 2026. Our demo page tracks every platform.</p></details>
+            <details><summary><span>03</span>Is there a demo?<ChevronRight /></summary><p>No public demo has been announced as of August 28, 2026. Our demo page tracks every platform.</p></details>
           </div>
           <SourcePanel />
         </section>

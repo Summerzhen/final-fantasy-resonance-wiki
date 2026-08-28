@@ -227,6 +227,9 @@ img { display: block; }
 .snapshot strong { overflow: hidden; color: #d9e1e2; font: 500 15px/1.25 var(--display); text-overflow: ellipsis; white-space: nowrap; }
 .snapshot .status { margin-top: 7px; }
 .home-content { padding: 140px 0 150px; display: grid; gap: 150px; }
+.latest-update-section { padding: 92px 0 80px; }
+.latest-update-section .section-intro-row { margin-bottom: 22px; }
+.latest-update-section .section-heading { margin-bottom: 0; }
 .section-intro-row { display: flex; align-items: end; justify-content: space-between; gap: 40px; }
 .section-heading { max-width: 760px; margin-bottom: 38px; }
 .section-heading > span { color: var(--crystal); font-size: 9px; font-weight: 800; letter-spacing: .23em; }

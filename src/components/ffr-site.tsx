@@ -35,6 +35,7 @@ const searchDestinations = [
   { href: "/locations", label: "Locations database", group: "World" },
   { href: "/how-to-get-visions", label: "How to get Visions", group: "Systems" },
   { href: "/preorder", label: "Preorder & editions", group: "Launch" },
+  { href: "/endgame", label: "Endgame hub", group: "Side content" },
   { href: "/bosses/gilgamesh", label: "Gilgamesh", group: "Side content" },
   { href: "/bosses/ultima-weapon", label: "Ultima Weapon", group: "Side content" },
   { href: "/chamber-of-arms", label: "Chamber of Arms", group: "Side content" },
@@ -124,7 +125,7 @@ export function SiteHeader() {
       <div className="notice">
         <span>Independent archive</span>
         <span>Unofficial fan-made wiki</span>
-        <span>Verified Aug 13, 2026</span>
+        <span>Verified Aug 28, 2026</span>
       </div>
       <header className="site-header">
         <div className="nav-shell">
@@ -270,7 +271,7 @@ export function SiteFooter() {
         </div>
         <FooterColumn title="Explore" links={[["Game overview", "/game"], ["Characters", "/characters"], ["Visions", "/visions"], ["Map", "/locations"]]} />
         <FooterColumn title="Release" links={[["Platforms", "/release-date-platforms"], ["Preorder", "/preorder"], ["Editions", "/editions-pre-order"], ["PC requirements", "/pc-system-requirements"]]} />
-        <FooterColumn title="Systems" links={[["Beginner guide", "/beginner-guide"], ["Stagger", "/stagger-system"], ["Resonance attacks", "/resonance-attacks"], ["Espers", "/espers"], ["FFBE comparison", "/brave-exvius-comparison"]]} />
+        <FooterColumn title="Systems" links={[["Beginner guide", "/beginner-guide"], ["Stagger", "/stagger-system"], ["Resonance attacks", "/resonance-attacks"], ["Espers", "/espers"], ["Endgame", "/endgame"], ["FFBE comparison", "/brave-exvius-comparison"]]} />
       </div>
       <div className="legal">Final Fantasy Resonance Wiki is an independent fan-made reference site. FINAL FANTASY, FINAL FANTASY RESONANCE, related characters, artwork and game assets are trademarks or copyrighted works of Square Enix Holdings Co., Ltd. and/or its affiliates. Original editorial text, design and data organization © 2026 final-fantasy-resonance.wiki.</div>
     </footer>
@@ -294,15 +295,16 @@ export function SourcePanel() {
     <section className="source-panel">
       <div><ShieldCheck /><h2>Evidence, not guesswork</h2></div>
       <p>Every field is labeled <StatusBadge status="Confirmed" />, <StatusBadge status="Observed" />, <StatusBadge status="Reported" /> or <StatusBadge status="Unknown" />. “Unknown” means Square Enix has not announced it — we do not fill gaps with speculation.</p>
-      <div className="source-links"><a href="https://www.square-enix.com/finalfantasyresonance/en_US/">Official game site</a><a href="https://store.steampowered.com/app/3259780/FINAL_FANTASY_RESONANCE/">Steam listing</a><a href="https://press.na.square-enix.com/FINAL-FANTASY-RESONANCE">Press hub</a></div>
+      <div className="source-links"><a href="https://www.square-enix.com/finalfantasyresonance/en_US/">Official game site</a><a href="https://store.steampowered.com/app/3259780/FINAL_FANTASY_RESONANCE/">Steam listing</a><a href="https://press.na.square-enix.com/FINAL-FANTASY-RESONANCE">Press hub</a><a href="https://www.rpgsite.net/news/21171-final-fantasy-resonance-screenshots-gilgamesh-ultima-weapon">August 24 update</a></div>
     </section>
   );
 }
 
 export const hubCards = [
   { href: "/characters", icon: BookOpen, title: "Characters", count: "All cast", copy: "Story characters, playable status and Vision characters." },
-  { href: "/visions", icon: Sparkles, title: "Visions", count: "26 slots", copy: "Roles, origins, abilities and reveal status." },
+  { href: "/visions", icon: Sparkles, title: "Visions", count: "25 revealed", copy: "Roles, origins, abilities, Magicite and reveal status." },
   { href: "/locations", icon: Database, title: "Map & locations", count: "World hub", copy: "Regions, towns, dungeons, shrines and Espers." },
+  { href: "/endgame", icon: Swords, title: "Endgame", count: "New hub", copy: "Mighty Foes, Secret Dungeons, Gilgamesh and Ultima Weapon." },
   { href: "/beginner-guide", icon: Swords, title: "Beginner guide", count: "Start here", copy: "Characters, combat, Visions, Espers and platforms." },
   { href: "/release-date-platforms", icon: Database, title: "Launch database", count: "5 platforms", copy: "Dates, stores, editions and demo status." },
 ];

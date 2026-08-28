@@ -12,7 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
   return [...new Set([...INDEXABLE_ROUTES, ...entityRoutes])].map(path => ({
     url: `${siteUrl}${path}`,
-    lastModified: new Date("2026-08-15"),
+    lastModified: new Date("2026-08-28"),
     changeFrequency: path === "/" ? "daily" : "weekly",
     priority: path === "/" ? 1 : path.split("/").length === 2 ? 0.85 : 0.7,
   }));
